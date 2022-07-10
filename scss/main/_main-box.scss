@@ -1,0 +1,18 @@
+@use '../assets/assets' as *;
+
+.main{
+    width: clamp(772px, 65vw, 1272px);
+    margin: 80px auto;
+    display: flex;
+    gap: 80px;
+    position: relative;
+}
+
+@mixin main-mobile{
+    .main{
+        flex-direction: column;
+        width: 100vw;
+        margin: 0 auto;
+    }
+
+}

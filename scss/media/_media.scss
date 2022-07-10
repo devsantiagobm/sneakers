@@ -1,0 +1,9 @@
+@use '../header/header' as *;
+@use '../main/main' as *;
+
+@media screen and (max-width: 972px){
+    @include main-mobile();
+    @include images-mobile();
+    @include data-mobile();
+    @include header-mobile()
+}

@@ -1,0 +1,79 @@
+@use '../assets/assets' as *;
+
+@mixin imagesBoxes{
+    border-radius: 10px;
+    overflow: hidden;
+}
+.images{
+    display: flex;
+    flex-direction: column;
+    max-width: calc(50% - 40px);
+    gap: 32px;
+
+    &__main{
+        width: 100%;
+        @include imagesBoxes();
+    }
+
+    &__central{
+        object-fit: cover;
+        object-position: center;
+    }
+
+    &__list{
+        display: flex;
+        gap: 32px;
+    }
+
+    &__item{
+        @include imagesBoxes();
+        position: relative;
+        cursor: pointer;
+        outline: 4px solid transparent;
+        outline-offset: 5px;
+        transition: outline .2s ease;
+
+        &::before{
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba($color: #fff, $alpha: .5);
+            opacity: 0;
+            transition: opacity .2s ease;
+        }
+
+        @media (hover:hover){
+            &:hover::before,
+            &--active::before{
+            opacity: 1;
+        }
+        }
+
+        &--active{
+            outline: solid 4px $orange;
+        }
+    }
+}
+
+@mixin images-mobile{
+    .images{
+        min-width: 100vw;
+
+        &__main{
+            border-radius: 0;
+            max-height: 50vh;
+        }
+
+        &__list{
+            margin: 0 16px;
+        }
+
+        &__item{
+            outline-width: 3px;
+            &--active{
+                outline-width: 3px;
+            }
+        }
+    }
+
+}

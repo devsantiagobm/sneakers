@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sneakers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="src/style.css">
+    <script src="src/script.js" defer type="module"> </script>
+  </head>
+  <body> 
+    <header class="header"> 
+      <div class="bg"> </div>
+      <nav class="nav">
+        <div class="nav__box nav__box--menu"><img class="nav__menu" src="images/icon-menu.svg" alt="icon menu"></div>
+        <div class="nav__box"> <img class="nav__logo" src="images/logo.svg" alt="sneakers__icon"></div>
+        <ul class="nav__list"> 
+          <li class="nav__item nav__item--close"><img src="images/icon-close.svg" alt="icon close"></li>
+          <li class="nav__item">Collection</li>
+          <li class="nav__item">Men</li>
+          <li class="nav__item">Women</li>
+          <li class="nav__item">About</li>
+          <li class="nav__item">Contact</li>
+        </ul>
+      </nav>
+      <div class="user">
+        <div class="user__box user__box--cart">
+          <div class="user__products">0</div><img class="user__icon" src="images/icon-cart.svg" alt="icon__shop__cart">
+        </div>
+        <div class="user__box"><img class="user__image" src="images/image-avatar.png" alt="user__image"></div>
+      </div>
+      <div class="cart" style="max-height: 0px;"><span class="cart__title">Cart </span>
+        <hr class="cart__divider">
+        <div class="cart__info"> <img class="cart__img" src="images/image-product-1.jpg" alt="image__product">
+          <div class="cart__data"> <span class="cart__name">Fall limited edition sneakers </span>
+            <div class="cart__amount"> <span class="cart__price">$125.00 x</span><span class="cart__units"> </span><span class="cart__payment"> </span></div>
+          </div><img class="cart__delete" src="images/icon-delete.svg" alt="icon__delete">
+        </div>
+        <button class="cart__button">Checkout</button><span class="cart__message">Your cart is empty</span>
+      </div>
+    </header>
+    <main class="main"> 
+      <div class="images">
+        <div class="images__main"> <img class="images__central" src="images/image-product-1.jpg" alt="image__product"></div>
+        <ul class="images__list"> 
+          <li class="images__item images__item--active"> <img class="images__image" src="images/image-product-1.jpg" alt="image__product"></li>
+          <li class="images__item" data-id="2"> <img class="images__image" src="images/image-product-2.jpg" alt="image__product"></li>
+          <li class="images__item" data-id="3"> <img class="images__image" src="images/image-product-3.jpg" alt="image__product"></li>
+          <li class="images__item" data-id="4"> <img class="images__image" src="images/image-product-4.jpg" alt="image__product"></li>
+        </ul>
+      </div>
+      <div class="data"><span class="data__subtitle">sneakers company</span>
+        <h1 class="data__title">fall limited edition snikers</h1>
+        <p class="data__text">These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.</p>
+        <div class="data__prices">
+          <div class="data__discount"> <span class="data__value">$125.00</span><span class="data__reduction">50%</span></div><span class="data__price">$250.00</span>
+        </div>
+        <div class="data__cart">
+          <button class="data__button"><img src="images/icon-minus.svg" alt="icon minus product"></button><span class="data__amount">0</span>
+          <button class="data__button"><img src="images/icon-plus.svg" alt="icon plus product"></button>
+          <button class="data__add"> <img src="images/icon-add.svg" alt="icon__add__product">Add to cart</button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

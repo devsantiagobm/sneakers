@@ -1,0 +1,335 @@
+@use "../assets/assets" as *;
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 24px clamp(124px, 11vw, 180px) 0;
+    position: relative;
+    z-index: 10;
+
+}
+
+.bg {
+    width: 100vw;
+    height: 100vh;
+    background-color: $black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 10;
+    display: none;
+    transition: opacity .4s ease;
+    &--active{
+        display: block;
+        opacity: 1;
+    }
+}
+
+.nav {
+    display: flex;
+    gap: 64px;
+    align-items: center;
+    color: $dark-grayish-blue;
+    font-size: 15px;
+
+    &__list {
+        display: flex;
+        align-items: center;
+        gap: clamp(24px, 2.5vw, 40px);
+    }
+
+    &__item {
+        transition: color .2s ease;
+        cursor: pointer;
+        position: relative;
+        user-select: none;
+
+
+        @media (hover:hover) {
+            &:hover {
+                color: $very-dark-blue;
+            }
+        }
+
+
+        &--close {
+            display: none;
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background-color: $orange;
+            top: 125%;
+            opacity: 0;
+            transition: opacity .2s ease;
+        }
+
+        @media (hover:hover) {
+            &:hover::before {
+                opacity: 1;
+            }
+
+        }
+    }
+
+    &__box--menu {
+        display: none;
+    }
+
+}
+
+
+.user {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    position: relative;
+
+    &__box {
+        position: relative;
+        cursor: pointer;
+
+        &--cart {
+            border-radius: 50%;
+            box-shadow: 0 0 0 15px transparent;
+            background-color: transparent;
+            transition: background-color .2s ease, box-shadow .2s ease;
+
+            &:hover {
+                background-color: $pale-orange;
+                box-shadow: 0 0 0 15px $pale-orange;
+            }
+        }
+
+        &:nth-child(2) {
+            width: 45px;
+            height: auto;
+            aspect-ratio: 1;
+            position: relative;
+
+            &::before {
+                content: "";
+                background-color: $white;
+                z-index: -1;
+                position: absolute;
+                width: 110%;
+                height: auto;
+                aspect-ratio: 1;
+                transform: translate(-50%, -50%);
+                inset: 50% 0 0 50%;
+                border-radius: 50%;
+                outline: solid 3px $orange;
+                opacity: 0;
+                transition: opacity .2s ease;
+            }
+
+            &:hover::before {
+                opacity: 1;
+            }
+        }
+
+        &--active {
+            background-color: $pale-orange;
+            box-shadow: 0 0 0 15px $pale-orange;
+        }
+    }
+
+    &__products {
+        position: absolute;
+        background-color: $orange;
+        color: $light-grayish-blue;
+        font-size: 10px;
+        width: 18px;
+        height: 18px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        padding: 2px;
+        top: -40%;
+        left: 60%;
+        opacity: 1;
+        transition: opacity .2s ease;
+    }
+}
+
+.cart {
+    position: absolute;
+    background-color: $white;
+    z-index: 1;
+    top: 175%;
+    right: 150px;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    min-width: 365px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    overflow: hidden;
+    transition: max-height .3s ease;
+
+    &__title {
+        font-weight: $bold;
+        padding: 24px;
+    }
+
+    &__divider {
+        width: 100%;
+        border: transparent 1px solid;
+        border-bottom-color: hsl(220, 14%, 90%);
+    }
+
+    &__info {
+        padding: 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    &__img {
+        max-width: 50px;
+        border-radius: 5px;
+    }
+
+
+    &__data {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        color: $dark-grayish-blue;
+    }
+
+    &__name {
+        font-size: 17px;
+        text-transform: capitalize;
+    }
+
+    &__payment {
+        font-weight: $bold;
+        color: $very-dark-blue;
+    }
+
+    &__delete {
+        min-width: 14px;
+        margin: 0 0 0 4px;
+        cursor: pointer;
+    }
+
+    &__button {
+        background-color: $orange;
+        color: $white;
+        padding: 18px;
+        width: calc(100% - 48px);
+        margin: 0 auto 24px;
+        display: grid;
+        place-items: center;
+        font-weight: $bold;
+        border-radius: 10px;
+        cursor: pointer;
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba($color: #fff, $alpha: .3);
+            opacity: 0;
+            transition: opacity .2s ease;
+        }
+
+        &:hover::before {
+            opacity: 1;
+        }
+    }
+
+    &__message {
+        margin: auto;
+        padding: 76px 0;
+        display: none;
+    }
+
+    &--empty .cart__info,
+    &--empty .cart__button {
+        display: none;
+    }
+
+    &--empty &__message {
+        display: block;
+    }
+}
+
+@mixin header-mobile {
+    .header {
+        padding: 16px 16px;
+        position: relative;
+
+    }
+
+
+
+    .nav {
+        gap: 16px;
+        align-items: center;
+
+        &__box {
+            display: grid;
+            align-items: center;
+
+        }
+
+        &__list {
+            flex-direction: column;
+            position: fixed;
+            align-items: flex-start;
+            font-weight: $bold;
+            font-size: 20px;
+            color: $very-dark-blue;
+            z-index: 100;
+            width: 60vw;
+            height: 100vh;
+            top: 0;
+            // transform: translateX(-100%);
+            left: -100%;
+            background-color: $white;
+            padding: 5vh 6vw;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 0px 100px -20px, rgba(0, 0, 0, 0.3) 0px 0px 60px -30px;
+            transition: left .4s ease;
+
+            &--active {
+                left: 0;
+            }
+        }
+
+        &__item {
+            &--close {
+                display: block;
+                margin: 0 0 24px;
+            }
+        }
+
+        &__box--menu {
+            display: block;
+        }
+
+
+    }
+
+    .user {
+
+        &__box {
+
+            &:nth-child(2) {
+                max-width: 30px;
+            }
+        }
+    }
+
+    .cart{
+        top: 150%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}

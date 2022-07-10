@@ -1,0 +1,84 @@
+include data.pug
+
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Sneakers
+        link(rel='preconnect', href='https://fonts.googleapis.com')
+        link(rel='preconnect', href='https://fonts.gstatic.com', crossorigin='')
+        link(href='https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap', rel='stylesheet')
+        link(rel="stylesheet", href="src/style.css")
+
+        script(src="src/script.js" defer type="module") 
+    body 
+        header.header 
+            .bg 
+            nav.nav
+                .nav__box.nav__box--menu
+                    img(src="images/icon-menu.svg", alt="icon menu").nav__menu
+                .nav__box 
+                    img(src="images/logo.svg", alt="sneakers__icon").nav__logo 
+                ul.nav__list 
+                    li.nav__item.nav__item--close
+                        img(src="images/icon-close.svg", alt="icon close")
+                    each item in nav
+                        li.nav__item= item
+            
+            .user
+                .user__box.user__box--cart
+                    .user__products 0
+                    img(src="images/icon-cart.svg", alt="icon__shop__cart").user__icon
+                .user__box
+                    img(src="images/image-avatar.png", alt="user__image").user__image
+            
+            .cart(style="max-height: 0px;")
+                span.cart__title Cart 
+                hr.cart__divider
+                .cart__info 
+                    img(src="images/image-product-1.jpg", alt="image__product").cart__img
+                    .cart__data 
+                        span.cart__name Fall limited edition sneakers 
+                        .cart__amount 
+                            span.cart__price $125.00 x
+                            span.cart__units  
+                            span.cart__payment  
+                    img(src="images/icon-delete.svg", alt="icon__delete").cart__delete
+                button.cart__button Checkout
+                span.cart__message Your cart is empty
+        
+        main.main 
+            
+            .images
+                .images__main 
+                    img(src="images/image-product-1.jpg", alt="image__product").images__central
+                ul.images__list 
+                    li.images__item.images__item--active(data-id= item) 
+                        img(src=`images/image-product-1.jpg`, alt="image__product").images__image 
+                    each item in [2,3,4]
+                        li.images__item(data-id= item) 
+                            img(src=`images/image-product-${item}.jpg`, alt="image__product").images__image 
+            
+            .data
+                
+                span.data__subtitle sneakers company
+                h1.data__title fall limited edition snikers
+                p.data__text These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything the weather can offer.
+                
+                .data__prices
+                    .data__discount 
+                        span.data__value $125.00
+                        span.data__reduction 50%
+                    span.data__price $250.00
+                
+                .data__cart
+                    button.data__button
+                        img(src="images/icon-minus.svg", alt="icon minus product") 
+                    span.data__amount 0
+                    button.data__button
+                        img(src="images/icon-plus.svg", alt="icon plus product") 
+                    button.data__add 
+                        img(src="images/icon-add.svg", alt="icon__add__product")
+                        |Add to cart

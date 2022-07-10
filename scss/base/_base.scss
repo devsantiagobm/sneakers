@@ -1,0 +1,8 @@
+@use '../assets/assets' as *;
+
+body{
+    min-height: 100vh;
+    background-color: $white;
+    font-family: 'Kumbh Sans', sans-serif;
+    color: $very-dark-blue;
+}
